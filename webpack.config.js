@@ -52,7 +52,7 @@ const clientConfig = {
 
 const serverConfig = {
   target: "node",
-  entry: './server/server.js',
+  entry: './server.js',
   output: {
     path: path.resolve( __dirname, 'build'),
     filename: "bundle-server.js",
