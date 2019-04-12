@@ -40,7 +40,9 @@ app.use(helmet()); //armours our API to prevent attacks
 /* tell the server to also serves the build folder, which contains
 all static assets, i.e. the client side code, aka, the react/redux stuff
 */
-app.use(express.static(path.resolve(__dirname + 'build')));
+console.log(__dirname)
+
+app.use(express.static(path.join(__dirname, 'build')));
 app.get('/', (req, res) =>{
   res.sendFile(path.join(__dirname, 'build/index.html'));
 });
