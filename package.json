@@ -9,7 +9,7 @@
     "dev": "concurrently --kill-others \"npm run dev-server\" \"npm run dev-client\"",
     "dev-build": "webpack --config ./webpack.dev.config.js --mode development",
     "prod-build": "webpack --config ./webpack.config.js --mode production",
-    "heroku-postbuild": "webpack --config ./webpack.config.js --mode production",
+    "heroku-postbuild": "echo do not run build",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
