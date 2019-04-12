@@ -1,0 +1,156 @@
+button, .picture_upload {
+  cursor: pointer;
+}
+
+button.text-info {
+  background: none;
+	border: none;
+}
+#root {
+    padding-bottom: 20px;
+    font-family: 'Sarabun', sans-serif;
+}
+#root.loading {
+  cursor: wait;
+}
+.icon-brand{
+  width: 40px;
+  height:40px;
+}
+.rentbuy{
+  margin: auto 5px;
+}
+#header-nav-bar{
+  font-size: 20px;
+}
+
+#review-del{
+  border: none;
+  margin-left: 19px;
+}
+.main-color, #root {
+    background-color: #ecebeb;
+}
+
+.beast-detail{
+    margin-top: 1em;
+}
+
+.picture_upload .fa-camera {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.picture_upload {
+  position: absolute;
+  top:80px;
+  border: 1px solid #4a4a4a;
+  border-radius: 50%;
+  color: #4a4a4a;
+  margin: 2px;
+  display: inline-block;
+  width: 32px;
+  height:32px;
+  margin-right: 8px;
+
+}
+.hidden {
+    display: none !important;
+}
+.avatar-image {
+  border-radius: 50%;
+}
+.user-profile {
+  display: flex;
+}
+.user-profile-name{
+  padding-left: 10px;
+  color: #fcc;
+}
+.go-back{
+    margin-left: 20px;
+    padding-bottom: 20px;
+    color: #4a4a4a;
+}
+
+
+#beast-new-title {
+  text-align: center;
+}
+
+#beast-new-div {
+  margin: 80px auto;
+}
+
+#banner{
+    background-image: url("https://assets.answersingenesis.org/img/cms/content/contentnode/header_image/am/v10/n2/yaks-header.jpg");
+    border-radius: 0;
+    color: #fff;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.beast-login {
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 20px !important;
+  background-color: #4a4a4a  !important;
+  padding:.5rem 1rem !important;
+  font-family: 'Sarabun', sans-serif !important;
+}
+.beast-login > span {
+  color: rgba(255, 255, 255, 0.5)!important;
+  padding: 0 !important;
+}
+.navbar{
+    background-color: #4a4a4a  !important;
+    color: #fff !important;
+}
+
+.fa-check {
+    color: green;
+}
+
+.fa-times {
+    color: red;
+}
+.fa-star {
+    color: #b8bbbd;
+}
+.fa-star.checked {
+    color: #ffc107;
+}
+
+#deletecomment, #deletebeast {
+    display: inline;
+}
+
+.form-image, textarea, .submit-button, .form-control, form-check-input, fieldset {
+   max-width: 600px;
+}
+
+.collapse {
+    color: #676666;
+}
+
+li.card-text {
+    list-style: none;
+}
+.form-check-label{
+  margin-left: 1.5em;
+}
+.form-check-input{
+  margin-left: 0.2em !important;
+}
+.beastview-button{
+  margin-bottom: 10px;
+}
+#googlemap {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}

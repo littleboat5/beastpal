@@ -1,0 +1,59 @@
+{
+  "name": "beastpal",
+  "version": "2.0.0",
+  "description": "find a beast to carry your burden",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "nodemon ./server/server.js",
+    "start-client": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
+    "dev": "concurrently --kill-others \"npm run start-server\" \"npm run start-client\"",
+    "dev-build": "webpack --config ./webpack.dev.config.js --mode development",
+    "prod-build": "webpack --config ./webpack.config.js --mode production",
+    "heroku-postbuild": "webpack --config ./webpack.config.js --mode production",
+    "start": "node ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cynthia Wong",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "dotenv-webpack": "^1.7.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cloudinary": "^1.14.0",
+    "connect-multiparty": "^2.2.0",
+    "connected-react-router": "^6.3.2",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "jquery": "^3.4.0",
+    "localforage": "^1.7.3",
+    "mongoose": "^5.5.1",
+    "node-geocoder": "^3.22.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-google-login": "^5.0.4",
+    "react-redux": "^7.0.1",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  }
+}
