@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev-server": "nodemon ./server/server.js",
-    "dev-client": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
+    "dev-client": "webpack-dev-server --config ./wpclient.dev.config.js --mode development",
     "dev": "concurrently --kill-others \"npm run dev-server\" \"npm run dev-client\"",
     "dev-build": "webpack --config ./webpack.dev.config.js --mode development",
-    "prod-build": "webpack --config ./webpack.config.js --mode production",
+    "prod-build": "webpack --config ./wpclient.config.js --mode production",
     "heroku-postbuild": "echo do not run build",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
