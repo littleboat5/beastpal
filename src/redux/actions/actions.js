@@ -19,48 +19,48 @@ const ROOT_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000
 export function loadBeasts () {
   const url = `${ROOT_URL}beasts`;
 
-  return (dispatch) => { axios
-      .get(url)
-      .then( (res) => { //res now contains the response from the ajax request
-          let bbs = res.data;
-          dispatch({type:LOAD_BEASTS, payload:bbs});
+  // return (dispatch) => { axios
+  //     .get(url)
+  //     .then( (res) => { //res now contains the response from the ajax request
+  //         let bbs = res.data;
+  //         dispatch({type:LOAD_BEASTS, payload:bbs});
+  //     })
+  //
+  //     .catch( (err) => console.log(err));
+  // }
+
+    return (dispatch) => {
+//First, try loading from cache for faster display
+      if ('caches' in window) {
+        caches.match(url).then( (res)=>{
+          if( res ){
+            res.json().then( (bbs)=>{
+              dispatch({type:LOAD_BEASTS, payload:bbs});
+            })
+          }
+        })
+      }
+
+//then, make network request to get the latest data
+      fetch(url)
+      .then(handleFetchErrors) //handle http errors in separate function coz fetch doesn't handle them
+      .then( (response)=>{
+    // cache the latest data
+        caches.open('beastpalData-v1')
+        .then( (cache)=>{
+          cache.put(url, response.clone() );
+          // console.log('[ServiceWorker] Fetched & Cached', url, response);
+          return response;
+        })
+        .then( (response)=>{
+    // dispatch latest data to the reducers for display on screen
+          response.json().then( (json)=>{
+            dispatch({type:LOAD_BEASTS, payload:json});
+          });
+        });
       })
-
       .catch( (err) => console.log(err));
-  }
-
-//     return (dispatch) => {
-// //First, try loading from cache for faster display
-//       if ('caches' in window) {
-//         caches.match(url).then( (res)=>{
-//           if( res ){
-//             res.json().then( (bbs)=>{
-//               dispatch({type:LOAD_BEASTS, payload:bbs});
-//             })
-//           }
-//         })
-//       }
-//
-// //then, make network request to get the latest data
-//       fetch(url)
-//       .then(handleFetchErrors) //handle http errors in separate function coz fetch doesn't handle them
-//       .then( (response)=>{
-//     // cache the latest data
-//         caches.open('beastpalData-v1')
-//         .then( (cache)=>{
-//           cache.put(url, response.clone() );
-//           // console.log('[ServiceWorker] Fetched & Cached', url, response);
-//           return response;
-//         })
-//         .then( (response)=>{
-//     // dispatch latest data to the reducers for display on screen
-//           response.json().then( (json)=>{
-//             dispatch({type:LOAD_BEASTS, payload:json});
-//           });
-//         });
-//       })
-//       .catch( (err) => console.log(err));
-//     }
+    }
 }
 
 /*=============== get 1 beast ================*/
