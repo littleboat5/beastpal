@@ -11,8 +11,8 @@ export const SET_USER = 'SET_USER';
 export const SET_BEASTOWNER = 'SET_BEASTOWNER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
-// const ROOT_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/' : '/api/';
-const ROOT_URL = '/api/';
+const ROOT_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/' : '/api/';
+// const ROOT_URL = '/api/';
 
 
 /*=============== Load all beasts ================*/
