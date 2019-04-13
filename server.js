@@ -40,20 +40,16 @@ app.use(helmet()); //armours our API to prevent attacks
 /* tell the server to also serves the build folder, which contains
 all static assets, i.e. the client side code, aka, the react/redux stuff
 */
-console.log("dirname: ", __dirname);
 
 app.use(express.static(path.join(__dirname, 'build')));
-
 app.get('/', (req, res) =>{
-  res.sendFile(path.join(__dirname, 'build/index.html'))
-  .catch( (err)=>{console.log("res.sendFile error: ", err)});
-  
+  res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
 app.use('/api', router); // append '/api' in front of all routes
 
 /*============== start server ==================*/
-let port = process.env.PORT || 8080;
+let port = process.env.PORT;
 
 // tell express to listen for requests
 app.listen(port, ()=>{
