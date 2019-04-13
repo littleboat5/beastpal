@@ -50,7 +50,7 @@ app.get('/', (req, res) =>{
 app.use('/api', router); // append '/api' in front of all routes
 
 /*============== start server ==================*/
-let port = process.env.PORT;
+let port = process.env.PORT || 8080;
 
 // tell express to listen for requests
 app.listen(port, ()=>{
