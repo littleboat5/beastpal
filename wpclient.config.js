@@ -28,7 +28,6 @@ module.exports = {
       'CLOUDINARY_API_KEY',
       'CLOUDINARY_API_SECRET',
       'DATABASEURL',
-      'NODE_ENV',
       'GEOCODER_API_KEY'
     ])
   ],
