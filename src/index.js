@@ -10,7 +10,7 @@ import App from './App';
 // import { register } from './serviceWorker';
 
 import {store, history} from "./redux/store";
-import { SET_USER } from './redux/actions/actions';
+import { SET_USER } from './constants';
 
 /*===========================================================*/
 /* Auth (login user data) is set in the login action */

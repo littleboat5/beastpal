@@ -1,15 +1,21 @@
 import axios from 'axios';
 import * as localForage from "localforage";
+import _ from 'lodash';
 
-export const LOAD_BEASTS = 'LOAD_BEASTS';
-export const VIEW_BEAST = 'VIEW_BEAST';
-export const CREATE_BEAST = 'CREATE_BEAST';
-export const EDIT_BEAST = 'EDIT_BEAST';
-export const DELETE_REVIEW = 'DELETE_REVIEW';
-export const ADD_REVIEW = 'ADD_REVIEW';
-export const SET_USER = 'SET_USER';
-export const SET_BEASTOWNER = 'SET_BEASTOWNER';
-export const LOGOUT_USER = 'LOGOUT_USER';
+import {LOAD_BEASTS ,
+        VIEW_BEAST ,
+        CREATE_BEAST ,
+        EDIT_BEAST,
+        DELETE_REVIEW ,
+        ADD_REVIEW ,
+        SET_USER ,
+        SET_BEASTOWNER ,
+        LOGOUT_USER ,
+        GET_RESERVATIONS ,
+        GET_RESERVATION_BY_USER ,
+        ADD_RESERVATION ,
+        DELETE_RESERVATION ,
+        UPDATE_RESERVATION } from '../../constants';
 
 const ROOT_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/' : '/api/';
 // const ROOT_URL = '/api/';
@@ -176,7 +182,65 @@ export function addReview(beast_id, values) {
       .catch((err) => console.log(err));
   }
 }
+/*=============== get all reservations for 1 beast ================*/
+export function getAllReserve(beast_id, user_id) {
+/* user_id can be null, if it is supplied, find also the reservation made by this
+user within the list of resevations retrieved for this beast
+*/
+  const url = `${ROOT_URL}beasts/${beast_id}/reservations`;
 
+  return (dispatch) => { axios
+      .get(url)
+      .then( (res) => {
+//1. get all reservations for this beast
+          dispatch({type:GET_RESERVATIONS, payload:res.data});
+          return res.data;
+      })
+      .then( (data)=>{
+//2. if a user_id is provided, find the reservation made by this user
+        if( user_id ){
+      //there may be multiple reservations made by this user, get the latest one
+          const resByUser = _.orderBy( data.filter( obj=>obj.userId === user_id ), 'startDate', 'desc')
+          if( resByUser ){
+            dispatch({type:GET_RESERVATION_BY_USER, payload:resByUser[0]});
+          }
+        }
+      })
+      .catch( (err) => console.log(err));
+  }
+
+}
+/*=============== add 1 reservation ================*/
+export function addReserve(beast_id, values) {
+  return (dispatch) => { axios
+      .post(`${ROOT_URL}beasts/${beast_id}/reservations`, values)
+      .then((res) => {
+          dispatch({type: ADD_RESERVATION, newResv: res.data});
+      })
+      .catch((err) => console.log(err));
+  }
+}
+/*=============== update reservation ================*/
+export function updateReserve (beast_id, reserve_id, values) {
+    return (dispatch) => { axios
+        .put(`${ROOT_URL}beasts/${beast_id}/reservations/${reserve_id}`, values)
+        .then((res) => {
+            dispatch({type: UPDATE_RESERVATION, updatedResv: res.data});
+        })
+        // .then( ()=>callback() )
+        .catch((err) => console.log(err));
+    }
+}
+/*=============== remove 1 reservation ================*/
+export function deleteReserve(beast_id, reserve_id) {
+  return (dispatch) => { axios
+      .delete(`${ROOT_URL}beasts/${beast_id}/reservations/${reserve_id}`)
+      .then((res) => {
+          dispatch({type: DELETE_RESERVATION, deletedResv: res.data});
+      })
+      .catch((err) => console.log(err));
+  }
+}
 
 //====== Handle HTTP errors since fetch won't. =======
 function handleFetchErrors(response) {

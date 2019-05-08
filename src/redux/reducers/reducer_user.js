@@ -1,4 +1,4 @@
-import { SET_USER, SET_BEASTOWNER } from '../actions/actions';
+import { SET_USER, SET_BEASTOWNER } from '../../constants';
 
 const initialState = {
     user: {},

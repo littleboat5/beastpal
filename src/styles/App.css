@@ -89,6 +89,9 @@ button.text-info {
     border-radius: 0;
     color: #fff;
 }
+#avail{
+  margin-top: 10px;
+}
 
 .btn {
   margin-right: 10px;
@@ -147,6 +150,7 @@ li.card-text {
   margin-left: 0.2em !important;
 }
 .beastview-button{
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 #googlemap {

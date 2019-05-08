@@ -1,5 +1,5 @@
 import { LOAD_BEASTS, VIEW_BEAST, EDIT_BEAST, DELETE_REVIEW, ADD_REVIEW }
-    from '../actions/actions';
+    from '../../constants';
 
 const initialState = {
     beasts: [],

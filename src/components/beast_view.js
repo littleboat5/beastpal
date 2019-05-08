@@ -1,3 +1,4 @@
+import 'react-dates/initialize';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -6,6 +7,7 @@ import { Link } from 'react-router-dom';
 import {getBeast, deleteBeast, getUser, deleteReview, addReview} from './../redux/actions/actions';
 import './../styles/App.css';
 import Reviews from './reviews';
+import Reserve from './reserve';
 import GoogleMap from './map';
 
 class BeastView extends Component {
@@ -89,41 +91,55 @@ before it finally sync up and the calls will stop
           <div className="col-md-3">
 {/*<!-- MAP */}
            <p>Serving Location: {beast.location}</p>
-            <GoogleMap lng={lng} lat={lat} location={location} wait={2000}/>
+  {/*          <GoogleMap lng={lng} lat={lat} location={location} wait={2000}/>*/}
           </div>
 
 {/* <!-- MAIN AREA - occupies 9/12 of the width*/}
           <div className="col-md-9">
               <div className="card border-0" >
-                  <img className={beast.image ? "card-img-top" : "card-img-top hidden"}
-                        src={beast.image} alt=''/>
-                  <div className="card-body">
+                <img className={beast.image ? "card-img-top" : "card-img-top hidden"}
+                      src={beast.image} alt=''/>
+                <div className="card-body">
 
-                    <h6 className="float-right">
-                      <span className="rentbuy">Hire{'\u00A0'}
-                      {beast.rent ? <i className="fa fa-check fa-sm" aria-hidden="true"></i> :
-                                    <i className="fa fa-times fa-sm" aria-hidden="true"></i>
-                      }</span>
-                      <span className="rentbuy">Buy{'\u00A0'}
-                      { beast.buy ? <i className="fa fa-check fa-sm" aria-hidden="true"></i> :
-                                    <i className="fa fa-times fa-sm" aria-hidden="true"></i>
-                      }</span>
-                    </h6>
+                  <h6 className="float-right">
+                    <span className="rentbuy">Hire{'\u00A0'}
+                    {beast.rent ? <i className="fa fa-check fa-sm" aria-hidden="true"></i> :
+                                  <i className="fa fa-times fa-sm" aria-hidden="true"></i>
+                    }</span>
+                    <span className="rentbuy">Buy{'\u00A0'}
+                    { beast.buy ? <i className="fa fa-check fa-sm" aria-hidden="true"></i> :
+                                  <i className="fa fa-times fa-sm" aria-hidden="true"></i>
+                    }</span>
+                  </h6>
 
-                    <h5 className="card-title">{ beast.name}, a { beast.type} that serves the { beast.region} region</h5>
-                    <p><em>Contact person: {owner.name}&nbsp;<small>{owner.email}</small></em></p>
+                  <h5 className="card-title">{ beast.name}, a { beast.type} that serves the { beast.region} region</h5>
+                  <p><em>Contact person: {owner.name}&nbsp;<small>{owner.email}</small></em></p>
 
-                    <br/>
-                    <p className="card-text">{beast.description}</p>
+                  <br/>
+                  <p className="card-text">{beast.description}</p>
+                </div>
+
+{/*<!-- EDIT/DELETE BEAST BUTTONS */}
+                <div className={user._id === owner._id ? "card-body" : "card-body hidden"}>
+                  <Link className="btn btn-warning beastview-button" to={`/beasts/${beast._id}/edit`}>Edit Beast Details</Link>
+                  <button className='btn btn-outline-danger beastview-button' onClick={this.onDeleteClick.bind(this)} >
+                    Remove Beast
+                  </button>
+                </div>
+
+{/* ------ RESERVATION SECTION ------*/}
+                <div className="card-body" id='reservation'>
+                  <button className="btn btn-success " data-toggle="collapse" data-target="#avail" href="#avail" >
+                    Check {beast.name}'s availability
+                  </button>
+
+                  <div id="avail" className="collapse card mb-3 border-0">
+                    <Reserve
+                      beast_id={beast._id}
+                      user_id={this.props.user._id}
+                    />
                   </div>
-
-  {/*<!-- EDIT/DELETE BEAST BUTTONS */}
-                  <div className={user._id === owner._id ? "card-body" : "card-body hidden"}>
-                    <Link className="btn btn-warning beastview-button" to={`/beasts/${beast._id}/edit`}>Edit Beast Details</Link>
-                    <button className='btn btn-outline-danger beastview-button' onClick={this.onDeleteClick.bind(this)} >
-                      Remove Beast
-                    </button>
-                  </div>
+                </div>
               </div>
 
               <div className="card mb-3 border-0 ">
@@ -142,7 +158,6 @@ before it finally sync up and the calls will stop
       </div>
     ); // end return
   }// end render
-
 }//end BeastView
 
 /*================= mapStateToProps =================*/

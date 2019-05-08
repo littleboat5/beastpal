@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import BeastsReducer from './reducers/reducer_beasts';
 import UserReducer from './reducers/reducer_user';
+import ReserveReducer from './reducers/reducer_reserve';
 import { connectRouter } from 'connected-react-router';
 
 // deprecated!! import { routerReducer } from 'react-router-redux';
@@ -11,7 +12,8 @@ import { connectRouter } from 'connected-react-router';
 export default (history) => combineReducers({
     router: connectRouter(history),
     beasts : BeastsReducer,
-    user: UserReducer
+    user: UserReducer,
+    reserve: ReserveReducer
 });
 
 // export default combineReducers({
