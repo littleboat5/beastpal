@@ -100,14 +100,14 @@ class Reserve extends Component {
 /* ================================================*/
   render(){
     const {user_id} = this.props;
+    let {focusedInput, startDate, endDate} = this.state;
 
 // Check if user has reservation
     let hasResv = this.props.myResv //user seems to have a reservation
                   && Object.keys(this.props.myResv).length !== 0 //it does contains something
                   && user_id; //user is logged in
 
-    let {focusedInput, startDate, endDate} = this.state;
-
+// determine startDate, endDate
     if (!user_id){ //no login user
       startDate = null;
       endDate = null;
