@@ -91,7 +91,7 @@ before it finally sync up and the calls will stop
           <div className="col-md-3">
 {/*<!-- MAP */}
            <p>Serving Location: {beast.location}</p>
-  {/*          <GoogleMap lng={lng} lat={lat} location={location} wait={2000}/>*/}
+           <GoogleMap lng={lng} lat={lat} location={location} wait={2000}/>
           </div>
 
 {/* <!-- MAIN AREA - occupies 9/12 of the width*/}
