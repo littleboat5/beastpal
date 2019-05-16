@@ -1,4 +1,5 @@
-## BeastPal - Find a beast to carry your burden in your next wild adventure!
+# ![fav](images/favicon2.png) BeastPal
+## Find a beast to carry your burden in your next wild adventure!
 Cloud-source beast of burdens that are available for hire in 6 major trekking
 regions: Mongolia, Andes, Tibet, Sahara, Pamir, Taklamakan
 
@@ -12,11 +13,17 @@ regions: Mongolia, Andes, Tibet, Sahara, Pamir, Taklamakan
 - Other: [Bootstrap](https://getbootstrap.com)
 
 ## Features
-- Google Sign-in
-- Picture upload
-- Google map geocoding the serving location of the beast
-- Reserve a beast for hire
-- Add beasts to the inventory
-- View all beasts
-- View details of 1 beast
-- Write reviews on registered beasts
+#### - Google Sign-in
+#### - Picture upload
+#### - Google map geocoding the serving location of the beast
+![map](images/map2.png)
+
+#### - Reservation system
+![reserve](images/reserve2.png)
+
+#### - Add beasts to the inventory
+#### - View all beasts
+#### - View details of 1 beast
+#### - Write reviews on registered beasts
+
+![review](images/review2.png)
