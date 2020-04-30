@@ -42,7 +42,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "localforage": "^1.7.3",
     "moment": "^2.24.0",
     "mongoose": "^5.5.1",
