@@ -45,7 +45,7 @@
     "jquery": "^3.4.0",
     "localforage": "^1.7.3",
     "moment": "^2.24.0",
-    "mongoose": "^5.5.1",
+    "mongoose": "^5.7.5",
     "node-geocoder": "^3.22.0",
     "react": "^16.8.6",
     "react-dates": "^20.1.0",
